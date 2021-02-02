@@ -32,11 +32,18 @@ function App() {
                     <Link to='/'>amazona</Link>
                 </div>
                 <div className="header-links">
-                    <a href="cart.html">Cart</a>
+                    <div><a href="cart.html">Cart</a> </div>
                     {
-                        userInfo ? <Link to="/profile">{userInfo.name}</Link>: <Link to="/signin">Singin</Link>
+                        userInfo ? <div className="dropdown show">
+                                        <a className="dropdown-toggle" role="button" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{userInfo.name}</a>
+                                        <div className="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink">
+                                            <Link className="dropdown-item" to="/profile">Profile</Link>
+                                            <Link className="dropdown-item" to="/products">Management Product</Link>
+                                            <a className="dropdown-item" href="#">Log out</a>
+                                        </div>
+                                    </div>
+                        : <Link to="/signin">Singin</Link>
                     }
-                    
                 </div>
             </header>
             <aside className="sidebar">

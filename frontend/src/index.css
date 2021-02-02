@@ -41,6 +41,13 @@ button{
   font-weight: bold;
   text-decoration: none;
 }
+.dropdown-menu {
+  background-color: #203040;
+}
+.header-links{
+  display: flex;
+  padding-right: 1rem;
+}
 .header-links a{
   color: #ffffff;
   text-decoration: none;

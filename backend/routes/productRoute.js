@@ -16,7 +16,8 @@ router.get("/:id",async (req,res) =>{
         res.status(404).send({message:"Product not found"});
     }
 });
-router.post("/",isAuth,isAdmin, async (req,res) =>{
+router.post("/",isAuth, async (req,res) =>{
+    console.log(req.body);
     const product = new Product({
         name        : req.body.name,
         image       : req.body.image,
@@ -27,6 +28,7 @@ router.post("/",isAuth,isAdmin, async (req,res) =>{
         description : req.body.description,
         rating      : req.body.rating,
         numReviews  : req.body.numReviews,
+        userId      : req.body.userId
     });
     const newProduct = await product.save();
     if(newProduct){
