@@ -1,8 +1,10 @@
 import React ,{useEffect, useState} from 'react'
 import {Link} from 'react-router-dom';
+import Grid from '@material-ui/core/Grid';
 import {useSelector , useDispatch} from 'react-redux';
 import { signin } from '../actions/userActions';
 import { saveProduct, listProducts, deleteProduct } from '../actions/productActions';
+import ProductListScreen from './ProductListScreen';
 function ProductsScreen(props){
     const[modalVisible,setModalVisible] = useState(false);
     const[id,setId] = useState('');
@@ -109,8 +111,9 @@ return <div className="content content-margined">
             </form>
         </div>
     }
+     <Grid item xs={6}><ProductListScreen/></Grid>
     
-    <div className="product-list">
+    {/* <div className="product-list">
         <table className="table">
             <thead>
                 <tr>
@@ -138,7 +141,7 @@ return <div className="content content-margined">
                 </tr>))}
             </tbody>
         </table>
-    </div>
+    </div> */}
 </div>
 }
 export default ProductsScreen;

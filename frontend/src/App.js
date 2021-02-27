@@ -11,6 +11,7 @@ import ProductsScreen from './screens/ProductsScreen';
 import ShippingScreen from './screens/ShippingScreen';
 import PaymentScreen from './screens/PaymentScreen';
 import PlaceOrderScreen from './screens/PlaceOrderScreen';
+import HomeManagerScreen from './screens/HomeManagerScreen';
 function App() {
   const userSignin = useSelector(state => state.userSignin);
   const {userInfo} = userSignin;
@@ -38,11 +39,11 @@ function App() {
                                         <a className="dropdown-toggle" role="button" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{userInfo.name}</a>
                                         <div className="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink">
                                             <Link className="dropdown-item" to="/profile">Profile</Link>
-                                            <Link className="dropdown-item" to="/products">Management Product</Link>
+                                            {userInfo.isAdmin && <Link className="dropdown-item" to="/products">Management Product</Link>}
                                             <a className="dropdown-item" href="#">Log out</a>
                                         </div>
                                     </div>
-                        : <Link to="/signin">Singin</Link>
+                        :<div> <Link to="/signin">Singin</Link></div>
                     }
                 </div>
             </header>
@@ -69,6 +70,7 @@ function App() {
                     <Route path="/register" component ={RegisterScreen} />
                     <Route path="/cart/:id?" component ={CartScreen} />
                     <Route path ="/" exact={true} component={HomeScreen} />
+                    <Route path ="/manager" exact={true} component={HomeManagerScreen} />
                 </div>
             </main>
             <footer className="footer">
